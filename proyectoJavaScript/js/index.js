@@ -16,9 +16,32 @@ function convertirMoneda(cantidad, monedaOrigen, monedaDestino) {
 }
 
 
-const peso = new Moneda("Peso", 1054);
-const dolar = new Moneda("Dólar", 1);
-const euro = new Moneda("Euro", 0.85); 
+const valores = [
+    {
+        nombre: "Peso", 
+        precio: 1054,
+    },
+    {
+        nombre: "Dólar",
+        precio: 1,
+    },
+    {
+        nombre: "Euro",
+        precio: 0.85,
+    }
+
+] 
+
+const nombresMonedas = valores.map((valor)=> valor.nombre) 
+
+const precioMonedas = valores.map((elemento)=> elemento.precio)
+
+
+
+const peso = new Moneda(nombresMonedas[0], precioMonedas[0]);
+const dolar = new Moneda(nombresMonedas[1], precioMonedas[1]);
+const euro = new Moneda(nombresMonedas[2], precioMonedas[2]); 
+
 
 
 let ciclo = true;
