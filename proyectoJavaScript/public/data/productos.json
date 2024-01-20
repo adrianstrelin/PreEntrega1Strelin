@@ -1,0 +1,14 @@
+[
+    {
+        "tipoMoneda": "Pesos Argentinos",
+        "valorEnPesos": 1054
+    },
+    {
+        "tipoMoneda": "Dólares Estadounidenses",
+        "valorEnPesos": 1
+    },
+    {
+        "tipoMoneda": "Euros",
+        "valorEnPesos": 0.85
+    }
+]

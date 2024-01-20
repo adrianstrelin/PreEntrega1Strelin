@@ -13,6 +13,7 @@ export const formularioUsuarios = {
   formNombre: document.querySelector("#formNombre"),
   formEmail: document.querySelector("#formEmail"),
   listaDeUsuarios: document.querySelector(".listaDeUsuarios"),
+  colorBotonRegistro: document.querySelector(".colorBotonRegistro"),
 };
 
 

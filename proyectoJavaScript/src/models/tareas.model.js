@@ -1,7 +1,4 @@
-
-
-//Modelo moneda
-
+// Modelo moneda
 export class Moneda {
     constructor(tipoMoneda, valorEnPesos) {
         this.tipoMoneda = tipoMoneda;
@@ -9,28 +6,45 @@ export class Moneda {
     }
 }
 
+
+
+// Función para convertir moneda
 export function convertirMoneda(cantidad, monedaOrigen, monedaDestino) {
     const tasaCambio = monedaDestino.valorEnPesos / monedaOrigen.valorEnPesos;
     return cantidad * tasaCambio;
 }
 
-const peso = new Moneda("Pesos Argentinos", 1054);
-const dolar = new Moneda("Dólares Estadounidenses", 1);
-const euro = new Moneda("Euros", 0.85);
 
-export { peso, dolar, euro };
 
-export function indicadorMoneda(valor) {
-    switch (valor) {
-        case "1":
-            return peso;
-        case "2":
-            return dolar;
-        case "3":
-            return euro;
-        default:
-            return null;
+
+// Array de monedas
+let monedas = [];
+
+
+const obtenerMonedas = async () => {
+    try {
+        const resp = await fetch("/data/productos.json");
+        const data = await resp.json();
+        console.log(data);
+        
+    } catch (error) {
+        console.log(error);
     }
+}
+
+obtenerMonedas();
+
+
+
+// Exportar las monedas individualmente
+export const [peso, dolar, euro] = monedas;
+
+
+
+// Función para obtener una moneda por su índice
+export function indicadorMoneda(valor) {
+    const indice = parseInt(valor) - 1;
+    return monedas[indice] || null;
 }
 
 

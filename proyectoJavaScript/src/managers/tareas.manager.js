@@ -1,6 +1,8 @@
 import { elementosHtml, formularioUsuarios } from "../elements/html.elements.js";
 import { Moneda, convertirMoneda, indicadorMoneda } from "../models/tareas.model.js";
-
+import Swal from "sweetalert2";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css"
 
 
 //Conversion
@@ -20,11 +22,25 @@ export function gestionarConversion() {
         const cantidad = parseFloat(convertidorMain.value);
         const monedaOrigen = indicadorMoneda(mainItem.value);
         const monedaDestino = indicadorMoneda(mainItem2.value);
-
+    
         if (!isNaN(cantidad) && monedaOrigen && monedaDestino) {
             const resultado = convertirMoneda(cantidad, monedaOrigen, monedaDestino);
-            resultadoConversion.innerText = `Equivale a ${resultado.toFixed(2)} ${monedaDestino.tipoMoneda}`;
+            const mensaje = `Equivale a ${resultado.toFixed(2)} ${monedaDestino.tipoMoneda}`;
+            
+            Swal.fire({
+                icon: 'success',
+                title: '¡Conversión exitosa!',
+                text: mensaje,
+            });
+    
+            resultadoConversion.innerText = mensaje;
         } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ingrese un monto válido y seleccione las monedas.',
+            });
+    
             resultadoConversion.innerText = "Ingrese un monto válido y seleccione las monedas.";
         }
     });
@@ -69,11 +85,32 @@ formularioUsuarios.registroForm.onsubmit = (event) => {
 const mensajeContainer = document.getElementById("mensajeContainer");
 
 const mostrarMensaje = (mensaje) => {
-    mensajeContainer.innerText = mensaje;
-    setTimeout(() => {
-        mensajeContainer.innerText = "";
-    }, 7000);
-}
+    Toastify({
+        text: mensaje,
+        duration: 3000,  
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+    }).showToast();
+};
+
+formularioUsuarios.registroForm.onsubmit = (event) => {
+    event.preventDefault();
+
+    if (usuariosRegistrados.length > 0) {
+        mostrarMensaje('Solo puede registrar un usuario por conversión');
+        return;
+    }
+
+    let usuario = {
+        nombre: formularioUsuarios.formNombre.value,
+        email: formularioUsuarios.formEmail.value,
+    }
+    usuariosRegistrados.push(usuario);
+    formularioUsuarios.registroForm.reset();
+    guardarUsuariosRegistrados();
+    mostrarUsuarios();
+};
 
 
 //sessionStorage de Usuarios (ampliar)
