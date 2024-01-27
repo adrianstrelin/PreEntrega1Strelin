@@ -7,6 +7,7 @@ import "toastify-js/src/toastify.css"
 
 //Conversion
 
+
 export function gestionarConversion() {
     const { botonIntercambio, mainItem, mainItem2, convertidorMain, botonConvertir, resultadoConversion } = elementosHtml;
 
@@ -19,6 +20,11 @@ export function gestionarConversion() {
     });
 
     botonConvertir.addEventListener("click", function () {
+        if (usuariosRegistrados.length === 0) {
+            mostrarMensaje('Debe registrarse antes de realizar una conversión');
+            return;
+        }
+
         const cantidad = parseFloat(convertidorMain.value);
         const monedaOrigen = indicadorMoneda(mainItem.value);
         const monedaDestino = indicadorMoneda(mainItem2.value);

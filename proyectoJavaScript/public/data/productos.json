@@ -1,7 +1,7 @@
 [
     {
         "tipoMoneda": "Pesos Argentinos",
-        "valorEnPesos": 1054
+        "valorEnPesos": 822.97
     },
     {
         "tipoMoneda": "Dólares Estadounidenses",
@@ -9,6 +9,30 @@
     },
     {
         "tipoMoneda": "Euros",
-        "valorEnPesos": 0.85
+        "valorEnPesos": 0.92
+    },
+    {
+        "tipoMoneda": "Libras Esterlinas",
+        "valorEnPesos": 0.78
+    },
+    {
+        "tipoMoneda": "Dólares australianos",
+        "valorEnPesos": 1.51
+    },
+    {
+        "tipoMoneda": "Yenes japoneses",
+        "valorEnPesos": 147.65
+    },
+    {
+        "tipoMoneda": "Francos suizos",
+        "valorEnPesos": 0.86
+    },
+    {
+        "tipoMoneda": "Rublos rusos",
+        "valorEnPesos": 89.92
+    },
+    {
+        "tipoMoneda": "Real brasilero",
+        "valorEnPesos": 4.91
     }
 ]
